@@ -48,13 +48,6 @@ async def kia_rio() -> FileResponse:
     return FileResponse(path=path, media_type=media_type)
 
 
-@app.get("/kia-seltos.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_carens() -> FileResponse:
-    path = "static/images/kia-seltos.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
 @app.get("/kia-sonet.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
 async def kia_picanto() -> FileResponse:
     path = "static/images/kia-sonet.png"
