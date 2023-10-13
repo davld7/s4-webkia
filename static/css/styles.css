@@ -65,9 +65,10 @@ nav {
     cursor: pointer;
     border: none;
     border-radius: 10px;
+    transition: background-color 0.3s;
 }
 
 #previousButton:hover,
 #nextButton:hover {
-    background-color: #0056b3;
+    background-color: #8b0000;
 }
