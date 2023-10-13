@@ -39,3 +39,31 @@ async def script() -> FileResponse:
     path = "static/js/script.js"
     media_type = "text/javascript"
     return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/kia-rio.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
+async def kia_rio() -> FileResponse:
+    path = "static/images/kia-rio.png"
+    media_type = "image/png"
+    return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/kia-seltos.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
+async def kia_carens() -> FileResponse:
+    path = "static/images/kia-seltos.png"
+    media_type = "image/png"
+    return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/kia-sonet.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
+async def kia_picanto() -> FileResponse:
+    path = "static/images/kia-sonet.png"
+    media_type = "image/png"
+    return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/kia-sportage.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
+async def kia_sportage() -> FileResponse:
+    path = "static/images/kia-sportage.png"
+    media_type = "image/png"
+    return FileResponse(path=path, media_type=media_type)
