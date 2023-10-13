@@ -41,6 +41,8 @@ nav {
 
 #imageCarousel {
     display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     width: 100%;
     position: relative;
@@ -58,6 +60,7 @@ nav {
 
 #previousButton,
 #nextButton {
+    width: 120px;
     background-color: #333;
     color: #fff;
     padding: 5px 10px;
@@ -71,4 +74,15 @@ nav {
 #previousButton:hover,
 #nextButton:hover {
     background-color: #8b0000;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#previousButton {
+    margin-right: 10px;
 }
