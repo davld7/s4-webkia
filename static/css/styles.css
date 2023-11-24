@@ -146,3 +146,30 @@ footer {
     font-weight: bold;
     font-size: 20px;
 }
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form label {
+    margin-top: 10px;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-top: 5px;
+}
+
+#contact-form button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
