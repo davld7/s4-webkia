@@ -36,7 +36,12 @@
                 <label for="message">Mensaje:</label>
                 <textarea id="message" name="message" required></textarea>
                 
-                <button type="submit">Enviar</button>
+                <button type="button" onclick="submitForm()">Enviar</button>
+
+                <a href="/contact/db" style="display: block; text-align: center;">Ver Registros</a>
+
+                <div id="formStatus" style="text-align: center;"></div>
+
             </form>
         </div>
     </main>
@@ -46,6 +51,8 @@
     </footer>
 
     <script src="/script.js"></script>
+
+    <script src="/contact.js"></script>
 
 </body>
 
