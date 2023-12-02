@@ -1,6 +1,6 @@
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
-icon: ./static/images/favicon.png
+icon: ./favicon.png
 micros:
   - name: webkia
     src: .
@@ -8,3 +8,8 @@ micros:
     primary: true
     public: true
     run: uvicorn main:app
+    presets:
+      env:
+        - name: URI
+          description: URI
+          default: ""

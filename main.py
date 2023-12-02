@@ -1,6 +1,8 @@
-from fastapi import FastAPI, status
-from fastapi.responses import HTMLResponse, FileResponse
-from routers import about, company, vehicles, contact, admin
+from fastapi import FastAPI, HTTPException, status
+from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
+from backend.routers import about, company, vehicles, contact, admin
+from backend.database.client import client
+from pymongo.errors import PyMongoError
 
 app = FastAPI()
 app.title = "KIA"
@@ -15,14 +17,14 @@ app.include_router(admin.router)
 
 @app.get("/", tags=tags, response_class=HTMLResponse, status_code=status.HTTP_200_OK)
 async def index() -> FileResponse:
-    path = "templates/index.html"
+    path = "index.html"
     media_type = "text/html"
     return FileResponse(path=path, media_type=media_type)
 
 
 @app.get("/favicon.ico", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
 async def favicon() -> FileResponse:
-    path = "static/images/favicon.ico"
+    path = "favicon.ico"
     media_type = "image/x-icon"
     return FileResponse(path=path, media_type=media_type)
 
@@ -41,64 +43,13 @@ async def script() -> FileResponse:
     return FileResponse(path=path, media_type=media_type)
 
 
-@app.get("/kia-rio.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_rio() -> FileResponse:
-    path = "static/images/kia-rio.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-sonet.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_picanto() -> FileResponse:
-    path = "static/images/kia-sonet.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-sportage.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_sportage() -> FileResponse:
-    path = "static/images/kia-sportage.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-picanto.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_picanto() -> FileResponse:
-    path = "static/images/kia-picanto.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-seltos.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_seltos() -> FileResponse:
-    path = "static/images/kia-seltos.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-carens.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_carens() -> FileResponse:
-    path = "static/images/kia-carens.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-sorento.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_sorento() -> FileResponse:
-    path = "static/images/kia-sorento.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-k2700.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_k2700() -> FileResponse:
-    path = "static/images/kia-k2700.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
-
-
-@app.get("/kia-k3000.png", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def kia_k3000() -> FileResponse:
-    path = "static/images/kia-k3000.png"
-    media_type = "image/png"
-    return FileResponse(path=path, media_type=media_type)
+@app.get("/ping", response_class=JSONResponse, status_code=status.HTTP_200_OK)
+async def send_ping():
+    try:
+        client.admin.command('ping')
+        message = "Pinged your deployment. You successfully connected to MongoDB!"
+        return JSONResponse(content={"message": message})
+    except PyMongoError as exception:
+        detail = str(exception)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=detail)
