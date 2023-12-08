@@ -1,3 +1,5 @@
 # WebKia
 
-<img src="https://github.com/davld7/s4-webkia/blob/main/static/images/screenshot.jpg?raw=true" alt="Screenshot" width="70%" />
+La base de datos utilizada fue MongoDB Atlas, un servicio de base de datos no relacional en la nube. Por otro lado, el backend fue desarrollado en Python, mientras que el frontend se construyó utilizando HTML, CSS y Javascript.
+
+![Screenshot](https://raw.githubusercontent.com/davld7/s4-webkia/main/static/images/screenshot.jpg)
