@@ -24,9 +24,30 @@
         </nav>
     </header>
 
+    <main>
+        <div class="container">
+            <h1>Login</h1>
+            <form id="kia-form">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="button" onclick="checkCredentials()">Login</button>
+
+                <div id="loginStatus" style="text-align: center;"></div>
+            </form>
+        </div>
+    </main>
+
     <footer>
         <p>&copy; 2023 KIA NICARAGUA - Desarrollado por Roberto David Morales Ramos</p>
     </footer>
+
+    <script src="/script.js"></script>
+
+    <script src="/admin.js"></script>
 
 </body>
 

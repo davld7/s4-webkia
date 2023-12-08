@@ -152,20 +152,20 @@ footer {
     margin: 0 auto;
 }
 
-#contact-form {
+#kia-form {
     display: flex;
     flex-direction: column;
 }
 
-#contact-form label {
+#kia-form label {
     margin-top: 10px;
 }
 
-#contact-form input, #contact-form textarea {
+#kia-form input, #kia-form textarea {
     margin-top: 5px;
 }
 
-#contact-form button {
+#kia-form button {
     margin-top: 10px;
     padding: 10px;
     background-color: #8b0000;

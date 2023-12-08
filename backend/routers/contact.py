@@ -30,3 +30,10 @@ async def create_contact(contact: ContactToCreate):
     result = contacts_collection.insert_one(contact_data)
     created_contact = contacts_collection.find_one({"_id": result.inserted_id})
     return contact_schema(created_contact)
+
+
+@router.get("/list", tags=tags, response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+async def contact_list() -> FileResponse:
+    path = "templates/contact-list.html"
+    media_type = "text/html"
+    return FileResponse(path=path, media_type=media_type)

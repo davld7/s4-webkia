@@ -44,8 +44,15 @@ async def script() -> FileResponse:
 
 
 @app.get("/contact.js", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
-async def script() -> FileResponse:
+async def contact_script() -> FileResponse:
     path = "static/js/contact.js"
+    media_type = "text/javascript"
+    return FileResponse(path=path, media_type=media_type)
+
+
+@app.get("/admin.js", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
+async def admin_script() -> FileResponse:
+    path = "static/js/admin.js"
     media_type = "text/javascript"
     return FileResponse(path=path, media_type=media_type)
 
