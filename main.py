@@ -43,6 +43,13 @@ async def script() -> FileResponse:
     return FileResponse(path=path, media_type=media_type)
 
 
+@app.get("/carousel.js", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
+async def carousel_script() -> FileResponse:
+    path = "static/js/carousel.js"
+    media_type = "text/javascript"
+    return FileResponse(path=path, media_type=media_type)
+
+
 @app.get("/contact.js", tags=tags, response_class=FileResponse, status_code=status.HTTP_200_OK, include_in_schema=False)
 async def contact_script() -> FileResponse:
     path = "static/js/contact.js"
